@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 
-const articleSchema = new Schema(
+const ArticleSchema = new Schema(
   {
     title: { type: String, minlength: 3, maxlength: 200 },
     content: { type: String, minlength: 50 },
@@ -15,3 +15,5 @@ const articleSchema = new Schema(
   },
   { timestamps: true }
 );
+
+export const ArticleModel = model("Article", ArticleSchema);

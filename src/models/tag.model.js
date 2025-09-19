@@ -7,3 +7,5 @@ const TagSchema = new Schema(
   },
   { timestamps: true }
 );
+
+export const TagModel = model("Tag", TagSchema);
