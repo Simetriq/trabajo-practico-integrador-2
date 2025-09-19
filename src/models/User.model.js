@@ -1,5 +1,4 @@
-import { Schema, Types } from "mongoose";
-import { type } from "os";
+import { Schema } from "mongoose";
 
 const UserSchema = new Schema(
   {
@@ -16,6 +15,7 @@ const UserSchema = new Schema(
     },
     password: {
       type: String,
+      require: true,
     },
   },
   {
