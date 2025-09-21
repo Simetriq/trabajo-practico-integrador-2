@@ -66,6 +66,12 @@ const UserSchema = new Schema(
         default: null,
       },
     },
+    articles: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Article", // ← Referencia al modelo Article
+      },
+    ],
     deletedAt: {
       type: Date,
       default: null,
