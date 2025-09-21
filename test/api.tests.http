@@ -1,0 +1,14 @@
+### Crear usuario
+POST http://localhost:4000/api/users
+Content-Type: application/json
+
+{
+  "username": "juanperez",
+  "email": "juan@email.com",
+  "password": "Password123",
+  "profile": {
+    "firstName": "Juan",
+    "lastName": "Pérez",
+    "biography": "Desarrollador fullstack con 5 años de experiencia"
+  }
+}

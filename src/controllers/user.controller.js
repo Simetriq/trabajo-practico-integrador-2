@@ -1,10 +1,16 @@
 import { UserModel } from "../models/User.model.js";
 
-export const getAllUsers = async (req, res) => {
+export const createUser = async (req, res) => {
   try {
-    const users = await UserModel.find();
-    res.status(200).json(users);
+    const { username, email, password, profile } = req.body;
+    const newUser = await UserModel.create({
+      username,
+      email,
+      password,
+      profile,
+    });
+    res.status(201).json(newUser);
   } catch (error) {
-    res.status(500).json({ message: "Error al obtener los usuarios", error });
+    res.status(400).json({ message: "error interno del servidor" });
   }
 };
