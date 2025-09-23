@@ -35,6 +35,7 @@ const UserSchema = new Schema(
       enum: ["user", "admin"],
       default: "user",
     },
+    //*------------[ Perfil embebido ]---------------------Relacion 1:1---------------------------------------
     profile: {
       firstName: {
         type: String,
@@ -69,7 +70,7 @@ const UserSchema = new Schema(
     articles: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Article", // ← Referencia al modelo Article
+        ref: "Article",
       },
     ],
     deletedAt: {

@@ -28,12 +28,14 @@ const ArticleSchema = new Schema(
       default: "published",
     },
     //&  author al mismo nivel (relación 1:N)
+    //& --------------------------------[ User ---> Article ]-------------------------------------------------------------
     author: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: [true, "El autor es requerido"],
     },
     //&  tags como array (relación N:M)
+    //&-------------------------[ Article <--> Tag ] ------------------------------------------------
     tags: [
       {
         type: Schema.Types.ObjectId,
