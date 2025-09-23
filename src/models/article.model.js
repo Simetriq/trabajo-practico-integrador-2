@@ -32,7 +32,7 @@ const ArticleSchema = new Schema(
     author: {
       type: Schema.Types.ObjectId,
       ref: "User",
-      required: [true, "El autor es requerido"],
+      // required: [true, "El autor es requerido"],
     },
     //&  tags como array (relación N:M)
     //&-------------------------[ Article <--> Tag ] ------------------------------------------------

@@ -18,5 +18,58 @@ GET http://localhost:4000/api/users
 Content-Type: application/json
 
 ### Traer Usuarios por ID
-GET http://localhost:4000/api/users/68d2a3e9e12da6b68506ebc0
+GET http://localhost:4000/api/users/68d2aaf680469086d10d646c
+Content-Type: application/json
+
+### Actualizar un usuario
+PUT http://localhost:4000/api/users/68d2aaf680469086d10d646c
+Content-Type: application/json
+
+{
+  "username": "juanperezactualizado",
+  "email": "actualizadojuan@email.com",
+  "password": "Password123aztualizado"
+}
+
+### Peticion para borrar un usuario
+DELETE http://localhost:4000/api/users/68d2aaf680469086d10d646c
+Content-Type: application/json
+
+
+
+
+########## PETICIONES DE ARTICULOS ###########
+POST http://localhost:4000/api/articles
+Content-Type: application/json
+
+{
+  "title": "Articulo de Juan", 
+  "content": "Mis proyectos de la tecnicatura superior de desarrollo de software del instituto", 
+  "excerpt": "Trabajos", 
+  "status": "published",
+  "author": "",
+  "tags":[]
+}
+
+##### Traer TODO LOS ARTICULOS
+GET http://localhost:4000/api/articles
+Content-Type: application/json
+
+######## Traer UN ARTICULO POR ID
+GET http://localhost:4000/api/articles/68d2b0a76c0c0c838939b78c
+Content-Type: application/json
+
+############ Actualizar un ARTICULO
+PUT http://localhost:4000/api/articles/68d2b9e79cb7f28c599a54c6
+Content-Type: application/json
+
+{
+  "title": "Articulo de Juan ACTUALIZADO", 
+  "content": "Mis proyectos de la tecnicatura superior de desarrollo de software del instituto Y ESTO ESTA ACTUALIZADO", 
+  "excerpt": "Trabajos Y ACTUALIZADO", 
+  "status": "published"
+}
+
+########## Peticion para BORRAR UN ARTICULO
+DELETE http://localhost:4000/api/articles/68d2b9e79cb7f28c599a54c6
 Content-Type: application/json

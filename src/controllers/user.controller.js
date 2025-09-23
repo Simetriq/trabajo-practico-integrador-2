@@ -62,3 +62,24 @@ export const updateUser = async (req, res) => {
     res.status(400).json({ message: "error interno del servidor" });
   }
 };
+
+export const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deletedUser = await UserModel.findByIdAndUpdate(
+      id,
+      {
+        $set: { isActive: false },
+      },
+      { new: true }
+    );
+    return res.status(200).json({
+      data: deletedUser,
+      ok: true,
+      msg: "Se borro el usuario exitosamente",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ message: "error interno del servidor" });
+  }
+};
