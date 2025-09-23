@@ -12,3 +12,7 @@ Content-Type: application/json
     "biography": "Desarrollador fullstack con 5 años de experiencia"
   }
 }
+
+### Traer Todos los Usuarios
+GET http://localhost:4000/api/users
+Content-Type: application/json
