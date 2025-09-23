@@ -47,7 +47,7 @@ Content-Type: application/json
   "content": "Mis proyectos de la tecnicatura superior de desarrollo de software del instituto", 
   "excerpt": "Trabajos", 
   "status": "published",
-  "author": "",
+  "author": "68d2c5160f90e2c4205ef717",
   "tags":[]
 }
 
@@ -73,3 +73,47 @@ Content-Type: application/json
 ########## Peticion para BORRAR UN ARTICULO
 DELETE http://localhost:4000/api/articles/68d2b9e79cb7f28c599a54c6
 Content-Type: application/json
+
+
+######### Peticion para Crear una TAG
+POST http://localhost:4000/api/tags/
+Content-Type: application/json
+
+# {
+#   "name": "Programacion",
+#   "description": "Todo lo relacionado a programacion",
+#   "article": "68d2c5230f90e2c4205ef71a" 
+# }
+
+# {
+#   "name": "Cocina",
+#   "description": "Todo lo relacionado a cocinar",
+#   "article": "68d2c5230f90e2c4205ef71a" 
+# }
+
+# {
+#   "name": "Conduccion",
+#   "description": "Todo lo relacionado a como manejar vehiculos",
+#   "article": "68d2c5230f90e2c4205ef71a" 
+# }
+
+##### PETICION PARA TRAER TODAS LAS TAGS
+GET http://localhost:4000/api/tags
+Content-Type: application/json
+
+
+### PETICION PARA TRAER UNA TAG POR ID
+GET http://localhost:4000/api/tags/68d2c5360f90e2c4205ef71c
+Content-Type: application/json
+
+#### peticion para actualizar una tag
+PUT http://localhost:4000/api/tags/68d2c5360f90e2c4205ef71c
+Content-Type: application/json
+
+
+#### Peticion para borrar una tag
+DELETE http://localhost:4000/api/tags/68d2c5360f90e2c4205ef71c
+Content-Type: application/json
+
+
+##### 

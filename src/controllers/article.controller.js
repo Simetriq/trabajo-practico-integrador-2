@@ -2,12 +2,13 @@ import { ArticleModel } from "../models/article.model.js";
 
 export const createArticle = async (req, res) => {
   try {
-    const { title, content, excerpt, status } = req.body;
+    const { title, content, excerpt, status, author } = req.body;
     const newArticle = await ArticleModel.create({
       title,
       content,
       excerpt,
       status,
+      author,
     });
     res.status(201).json(newArticle);
   } catch (error) {
