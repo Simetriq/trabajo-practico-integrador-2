@@ -16,3 +16,7 @@ Content-Type: application/json
 ### Traer Todos los Usuarios
 GET http://localhost:4000/api/users
 Content-Type: application/json
+
+### Traer Usuarios por ID
+GET http://localhost:4000/api/users/68d2a3e9e12da6b68506ebc0
+Content-Type: application/json

@@ -36,46 +36,49 @@ const UserSchema = new Schema(
       default: "user",
     },
     //*------------[ Perfil embebido ]---------------------Relacion 1:1---------------------------------------
-    profile: {
-      firstName: {
-        type: String,
-        trim: true,
-        minlength: [2, "El nombre debe tener al menos 2 caracteres"],
-        maxlength: [50, "El nombre no puede exceder los 50 caracteres"],
+    profile: [
+      {
+        firstName: {
+          type: String,
+          trim: true,
+          minlength: [2, "El nombre debe tener al menos 2 caracteres"],
+          maxlength: [50, "El nombre no puede exceder los 50 caracteres"],
+        },
+        lastName: {
+          type: String,
+          trim: true,
+          minlength: [2, "El apellido debe tener al menos 2 caracteres"],
+          maxlength: [50, "El apellido no puede exceder los 50 caracteres"],
+        },
+        biography: {
+          type: String,
+          maxlength: [500, "La biografía no puede exceder los 500 caracteres"],
+          default: "",
+        },
+        avatarUrl: {
+          type: String,
+          default: "",
+          match: [
+            /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/,
+            "Debe ser una URL válida",
+          ],
+        },
+        birthDate: {
+          type: Date,
+          default: null,
+        },
       },
-      lastName: {
-        type: String,
-        trim: true,
-        minlength: [2, "El apellido debe tener al menos 2 caracteres"],
-        maxlength: [50, "El apellido no puede exceder los 50 caracteres"],
-      },
-      biography: {
-        type: String,
-        maxlength: [500, "La biografía no puede exceder los 500 caracteres"],
-        default: "",
-      },
-      avatarUrl: {
-        type: String,
-        default: "",
-        match: [
-          /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/,
-          "Debe ser una URL válida",
-        ],
-      },
-      birthDate: {
-        type: Date,
-        default: null,
-      },
-    },
+    ],
     articles: [
       {
         type: Schema.Types.ObjectId,
         ref: "Article",
       },
     ],
-    deletedAt: {
-      type: Date,
-      default: null,
+    isActive: {
+      type: String,
+      enum: ["true", "false"],
+      default: "true",
     },
   },
   {
