@@ -110,10 +110,24 @@ Content-Type: application/json
 PUT http://localhost:4000/api/tags/68d2c5360f90e2c4205ef71c
 Content-Type: application/json
 
+{
+  "name": "Programacion ACTUALIZADO",
+  "description": "Todo lo relacionado a programacion ACTUALIZADO",
+  "article": "68d2c5230f90e2c4205ef71a" 
+}
 
 #### Peticion para borrar una tag
 DELETE http://localhost:4000/api/tags/68d2c5360f90e2c4205ef71c
 Content-Type: application/json
 
 
-##### 
+#####  RUTAS DE COMMENTS
+#### CREAR UN COMMENT
+POST http://localhost:4000/api/tags/68d2c5360f90e2c4205ef71c
+Content-Type: application/json
+
+{
+  "content": "Este es un comentario de prueba",
+  "author": "",
+  "article": "",
+}
