@@ -71,7 +71,7 @@ Content-Type: application/json
 }
 
 ########## Peticion para BORRAR UN ARTICULO
-DELETE http://localhost:4000/api/articles/68d3f33c2be6bf615ed6fb1e
+DELETE http://localhost:4000/api/articles/68d3f82139cd54244fee8d97
 Content-Type: application/json
 
 
@@ -127,6 +127,6 @@ POST http://localhost:4000/api/comments
 Content-Type: application/json
 
 {
-  "content": "Este es un comentario de prueba",
-  "article": "68d2e4722980d8ae0fc4a15b",
+  "content": "Este es un comentario de prueba2",
+  "article": "68d3f82139cd54244fee8d97"
 }
