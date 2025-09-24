@@ -12,12 +12,6 @@ const TagSchema = new Schema(
       trim: true,
     },
     description: { type: String, require: false, maxlength: 200 },
-    article: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Article",
-      },
-    ],
   },
 
   { timestamps: true }

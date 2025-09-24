@@ -24,7 +24,10 @@ export const createComment = async (req, res) => {
 
 export const getAllComments = async (req, res) => {
   try {
-    const allComments = await CommentModel.find();
+    const allComments = await CommentModel.find().populate(
+      "author",
+      "username email"
+    );
     return res.status(200).json(allComments);
   } catch (error) {
     console.log(error);

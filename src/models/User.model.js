@@ -75,10 +75,10 @@ const UserSchema = new Schema(
         ref: "Article",
       },
     ],
-    isActive: {
-      type: String,
-      enum: ["true", "false"],
-      default: "true",
+    deletedAt: {
+      type: Date,
+      require: false,
+      default: null,
     },
   },
   {
@@ -86,5 +86,19 @@ const UserSchema = new Schema(
     versionKey: false,
   }
 );
+
+// UserSchema.virtual("articles", {
+//   ref: "Article",
+//   localField: "_id",
+//   foreignField: "author",
+//   justOne: false,
+// });
+
+// UserSchema.set("toJSON", { virtuals: true });
+
+UserSchema.pre(/^find/, function (next) {
+  this.where({ deletedAt: { $eq: null } });
+  next();
+});
 
 export const UserModel = model("User", UserSchema);

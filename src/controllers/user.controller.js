@@ -1,12 +1,16 @@
+import { hashPassword } from "../helpers/bcrypt.helper.js";
 import { UserModel } from "../models/user.model.js";
 
 export const createUser = async (req, res) => {
   try {
     const { username, email, password, profile } = req.body;
+
+    const hashedPassword = await hashPassword(password)
+
     const newUser = await UserModel.create({
       username,
       email,
-      password,
+      password: hashedPassword,
       profile,
     });
     res.status(201).json(newUser);
@@ -69,7 +73,7 @@ export const deleteUser = async (req, res) => {
     const deletedUser = await UserModel.findByIdAndUpdate(
       id,
       {
-        $set: { isActive: false },
+        $set: { deletedAt: new Date() },
       },
       { new: true }
     );

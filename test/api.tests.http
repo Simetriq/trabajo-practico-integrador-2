@@ -130,3 +130,5 @@ Content-Type: application/json
   "content": "Este es un comentario de prueba2",
   "article": "68d3f82139cd54244fee8d97"
 }
+
+### TRAER TODOS LOS COMENTARIOS
