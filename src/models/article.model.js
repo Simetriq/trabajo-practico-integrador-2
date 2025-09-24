@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { CommentModel } from "./comment.model.js";
 
 const ArticleSchema = new Schema(
   {
@@ -51,5 +52,14 @@ const ArticleSchema = new Schema(
     timestamps: true,
   }
 );
+
+ArticleSchema.pre("findByIdAndDelete", async function (next) {
+  const doc = await this.model.findById(this.getQuery());
+  console.log("id del articulo: ",doc._id)
+  if (doc) {
+    await CommentModel.deleteMany({ article: doc._id });
+  }
+  next();
+});
 
 export const ArticleModel = model("Article", ArticleSchema);
