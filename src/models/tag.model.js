@@ -9,7 +9,6 @@ const TagSchema = new Schema(
       minlength: 2,
       trim: true,
       maxlength: 30,
-      trim: true,
     },
     description: { type: String, require: false, maxlength: 200 },
   },
@@ -30,5 +29,15 @@ TagSchema.pre("findOneAndDelete", async function (next) {
 
   next();
 });
+
+TagSchema.virtual("articles", {
+  ref: "Article", // Modelo al que referenciamos
+  localField: "_id", // Campo local: el _id de la tag
+  foreignField: "tags", // Campo en Article: el array 'tags'
+  justOne: false, // Para obtener múltiples artículos (array)
+});
+
+TagSchema.set("toObject", { virtuals: true });
+TagSchema.set("toJSON", { virtuals: true });
 
 export const TagModel = model("Tag", TagSchema);

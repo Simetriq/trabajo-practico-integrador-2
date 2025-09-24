@@ -87,15 +87,6 @@ const UserSchema = new Schema(
   }
 );
 
-// UserSchema.virtual("articles", {
-//   ref: "Article",
-//   localField: "_id",
-//   foreignField: "author",
-//   justOne: false,
-// });
-
-// UserSchema.set("toJSON", { virtuals: true });
-
 UserSchema.pre(/^find/, function (next) {
   this.where({ deletedAt: { $eq: null } });
   next();
