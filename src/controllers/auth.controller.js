@@ -1,5 +1,8 @@
 import { comparePassword } from "../helpers/bcrypt.helper.js";
-import { generateToken } from "../helpers/jwt.helper.js";
+import {
+  generateToken,
+  verifyToken
+} from "../helpers/jwt.helper.js";
 import { UserModel } from "../models/user.model.js";
 
 export const login = async (req, res) => {
@@ -37,6 +40,7 @@ export const getProfile = async (req, res) => {
   try {
     // El usuario está en req.user gracias al middleware authMiddleware
     // req.user contiene { id, email, role } del token
+    console.log("=======ERROR========",req.user.id);
     const userId = req.user.id;
 
     // Buscar usuario en la base de datos (excluyendo el password)
