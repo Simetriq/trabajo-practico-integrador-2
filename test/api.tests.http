@@ -128,6 +128,5 @@ Content-Type: application/json
 
 {
   "content": "Este es un comentario de prueba",
-  "author": "68d2e4181e0e04aea3a67ca3",
   "article": "68d2e4722980d8ae0fc4a15b",
 }
