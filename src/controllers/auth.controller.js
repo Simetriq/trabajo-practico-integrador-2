@@ -1,5 +1,5 @@
 import { comparePassword } from "../helpers/bcrypt.helper.js";
-import { generateToken, verifyToken } from "../helpers/jwt.helper.js";
+import { generateToken } from "../helpers/jwt.helper.js";
 import { UserModel } from "../models/user.model.js";
 
 export const login = async (req, res) => {
@@ -33,20 +33,37 @@ export const logout = async (req, res) => {
   return {};
 };
 
-export const getPerfil = async (req, res) => {
-  const { id } = req.cookie;
+export const getProfile = async (req, res) => {
   try {
-    const user = await UserModel.findById(req.user.id);
-    if (!id) {
-      return res.status(400).json({ msg: "No existe el perfil" });
+    // El usuario está en req.user gracias al middleware authMiddleware
+    // req.user contiene { id, email, role } del token
+    const userId = req.user.id;
+
+    // Buscar usuario en la base de datos (excluyendo el password)
+    const user = await UserModel.findById(userId).select("-password");
+
+    if (!user) {
+      return res.status(404).json({
+        ok: false,
+        msg: "Usuario no encontrado",
+      });
     }
+
     return res.status(200).json({
-      data: id,
-      msg: "Perfil de usuario logeado",
       ok: true,
+      data: {
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        role: user.role,
+      },
+      msg: "Perfil obtenido exitosamente",
     });
   } catch (error) {
-    console.log(error);
-    res.status(400).json({ message: "error interno del servidor" });
+    console.log("Error en getProfile:", error);
+    return res.status(500).json({
+      ok: false,
+      msg: "Error interno del servidor",
+    });
   }
 };
