@@ -28,7 +28,7 @@ TagSchema.pre("findOneAndDelete", async function (next) {
 
   const tag = await this.model.findOne(filter);
   if (tag) {
-    await ArticleModel.deleteMany(
+    await ArticleModel.updateMany(
       { tags: tag._id },
       { $pull: { tags: tag._id } }
     );
