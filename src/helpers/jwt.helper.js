@@ -6,7 +6,6 @@ export const generateToken = (user) => {
       id: user._id,
       email: user.email,
       role: user.role,
-      password: user.password,
     },
     process.env.JWT_SECRET,
     {
@@ -22,4 +21,3 @@ export const verifyToken = (token) => {
 
   return decoded;
 };
-

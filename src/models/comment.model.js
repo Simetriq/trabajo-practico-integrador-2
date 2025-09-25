@@ -8,6 +8,7 @@ const CommentSchema = new Schema(
       minlength: 5,
       maxlength: 500,
     },
+    author: { type: Schema.Types.ObjectId, ref: "User" },
     article: { type: Schema.Types.ObjectId, ref: "Article" },
   },
   { timestamps: true }

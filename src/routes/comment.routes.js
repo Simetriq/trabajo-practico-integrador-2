@@ -5,6 +5,8 @@ import {
   updateComment,
   deleteComment,
   getCommentId,
+  getComentLoged,
+  getCommentArticle,
 } from "../controllers/comment.controller.js";
 import {
   createCommentValidation,
@@ -30,3 +32,5 @@ commentRoutes.put(
   updateComment
 );
 commentRoutes.delete("/comments/:id", ownerOrAdminMiddleware, deleteComment);
+commentRoutes.get("/comments/article/:articleId", getCommentArticle);
+commentRoutes.get("/comments/my", getComentLoged);
