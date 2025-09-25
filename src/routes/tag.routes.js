@@ -6,11 +6,16 @@ import {
   getTagById,
   updateTag,
 } from "../controllers/tag.controller.js";
+import {
+  createTagValidation,
+  updateTagValidation,
+  tagIdValidation,
+} from "../middlewares/validations/tag.validator.js";
 
 export const routesTag = Router();
 
-routesTag.post("/tags", createTag);
+routesTag.post("/tags", createTagValidation, createTag);
 routesTag.get("/tags", getAllTags);
-routesTag.get("/tags/:id", getTagById);
-routesTag.put("/tags/:id", updateTag);
-routesTag.delete("/tags/:id", deleteTag);
+routesTag.get("/tags/:id", tagIdValidation, getTagById);
+routesTag.put("/tags/:id", updateTagValidation, updateTag);
+routesTag.delete("/tags/:id", tagIdValidation, deleteTag);
