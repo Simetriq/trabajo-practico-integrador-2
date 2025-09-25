@@ -11,11 +11,33 @@ import {
   updateArticleValidation,
   articleIdValidation,
 } from "../middlewares/validations/article.validation.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
+import { ownerOrAdminMiddleware } from "../middlewares/owner.js";
 
 export const articleRoutes = Router();
 
-articleRoutes.post("/articles", createArticleValidation, createArticle);
-articleRoutes.get("/articles", getAllArticles);
-articleRoutes.get("/articles/:id", articleIdValidation, getArticleId);
-articleRoutes.put("/articles/:id", updateArticleValidation, updateArticle);
-articleRoutes.delete("/articles/:id", articleIdValidation, deleteArticle);
+articleRoutes.post(
+  "/articles",
+  authMiddleware,
+  createArticleValidation,
+  createArticle
+);
+articleRoutes.get("/articles", authMiddleware, getAllArticles);
+articleRoutes.get(
+  "/articles/:id",
+  authMiddleware,
+  articleIdValidation,
+  getArticleId
+);
+articleRoutes.put(
+  "/articles/:id",
+  authMiddleware,
+  updateArticleValidation,
+  updateArticle
+);
+articleRoutes.delete(
+  "/articles/:id",
+  ownerOrAdminMiddleware,
+  articleIdValidation,
+  deleteArticle
+);
